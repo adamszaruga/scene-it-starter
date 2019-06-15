@@ -2,11 +2,13 @@ document.addEventListener(`DOMContentLoaded`, function() {
     function renderMovies (movieArray) {
         movieHTML= movieArray.map(currentMovie => {
             return `<div class="movie rounded">
-            <img src="${currentMovie.Poster}" alt="${currentMovie.Title} poster" class="movieImage">
-            <div class="movieInfo">
+            <img src="${currentMovie.Poster}" onClick="movieInfo(${currentMovie.imdbID})" alt="${currentMovie.Title} poster" class="movieImage">
+            <div class="movieInfo rounded d-none" id="${currentMovie.imdbID}">
             <h5 class="movieTitle">${currentMovie.Title}</h5>
-            <p class=" ">${currentMovie.Year}</p>
-            <p class=" ">${currentMovie.Type.toUpperCase()}</p>
+            <br>
+            <br>
+            <p class=" ">Released: ${currentMovie.Year}</p>
+            <br>
             <div class="addButton">
             <button class="btn">+</button>
             </div>
@@ -15,5 +17,12 @@ document.addEventListener(`DOMContentLoaded`, function() {
         })
         return movieHTML.join('')
     }
- document.getElementById('movieContainer').innerHTML = renderMovies(movieData)
+ document.getElementById('movieContainer').innerHTML = renderMovies(movieData);
  });
+
+
+ function movieInfo (movieID) {
+    const infoPanel = document.getElementById(movieID);
+    debugger;
+    infoPanel.classList.toggle('d-none')
+ }

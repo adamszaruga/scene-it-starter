@@ -1,6 +1,6 @@
 
 body {
-	background-color: #B2E9FD;
+	background-color: #343d46;
 }
 
 .header h2 {
@@ -23,21 +23,23 @@ body {
 }
 .movie {
 	display: flex;
-	background-color: lightgrey;
+
 	align-content: flex-start;
 	margin: 10px 20px;
 	padding: 0;
 }
 
 .movieInfo {
-	display: flex;
 	flex-direction: column;
 	flex-basis: 50%;
 	align-items: stretch;
 	justify-content: space-around;
+	background-color: #c0c5ce;
+	display: flex;
 }
 .movieTitle {
 	justify-self: flex-start;
+	text-align: center;
 }
 
 .movieImage {
@@ -56,6 +58,7 @@ body {
 	grid-template-columns: 1fr 1fr 1fr; 
  }
 }
+
 @media screen and (max-width: 1000px) and (min-width: 700px) {
 	.movies-container {
 	   grid-template-columns: 1fr 1fr; 
