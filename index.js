@@ -23,6 +23,5 @@ document.addEventListener(`DOMContentLoaded`, function() {
 
  function movieInfo (movieID) {
     const infoPanel = document.getElementById(movieID);
-    debugger;
-    infoPanel.classList.toggle('d-none')
+    movieID.classList.toggle('active')
  }

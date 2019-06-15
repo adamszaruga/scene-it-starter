@@ -4,11 +4,11 @@ body {
 }
 
 .header h2 {
-	color: #DC4247;
+	color: #c0c5ce;
 }
 
 .header p {
-	color: #50524F;
+	color: #65737e;
 }
 
 .results {
@@ -18,25 +18,32 @@ body {
 
 .movies-container {
 	display: grid;
+	margin: auto;
 	grid-template-rows: auto;
-	align-items: start;
 }
 .movie {
 	display: flex;
-
 	align-content: flex-start;
 	margin: 10px 20px;
 	padding: 0;
 }
 
 .movieInfo {
+	display: flex;
 	flex-direction: column;
 	flex-basis: 50%;
 	align-items: stretch;
 	justify-content: space-around;
 	background-color: #c0c5ce;
-	display: flex;
+	opacity: 1;
+	transition: opacity 2s ease-in;
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
 .movieTitle {
 	justify-self: flex-start;
 	text-align: center;
@@ -45,7 +52,8 @@ body {
 .movieImage {
 	flex-basis: 50%;
 	width: 50%;
-	margin-right: 5px
+	margin-right: 5px;
+	border-radius: 25px;
 }
 
 .addButton {
@@ -64,3 +72,4 @@ body {
 	   grid-template-columns: 1fr 1fr; 
 	}
    }
+
