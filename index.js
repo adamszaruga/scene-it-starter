@@ -3,7 +3,7 @@ document.addEventListener(`DOMContentLoaded`, function() {
         movieHTML= movieArray.map(currentMovie => {
             return `<div class="movie rounded">
             <img src="${currentMovie.Poster}" onClick="movieInfo(${currentMovie.imdbID})" alt="${currentMovie.Title} poster" class="movieImage">
-            <div class="movieInfo rounded d-none" id="${currentMovie.imdbID}">
+            <div class="rounded d-none movieInfo" id="${currentMovie.imdbID}">
             <h5 class="movieTitle">${currentMovie.Title}</h5>
             <br>
             <br>
