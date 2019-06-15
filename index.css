@@ -1,3 +1,4 @@
+
 body {
 	background-color: #B2E9FD;
 }
@@ -16,11 +17,9 @@ body {
 }
 
 .movies-container {
-	display: flex;
-	flex-wrap: wrap;
-	padding: 0;
-	margin: 0;
-	justify-content: center;
+	display: grid;
+	grid-template-rows: auto;
+	align-items: start;
 }
 .movie {
 	display: flex;
@@ -34,6 +33,11 @@ body {
 	display: flex;
 	flex-direction: column;
 	flex-basis: 50%;
+	align-items: stretch;
+	justify-content: space-around;
+}
+.movieTitle {
+	justify-self: flex-start;
 }
 
 .movieImage {
@@ -44,8 +48,16 @@ body {
 
 .addButton {
 	align-self: flex-end;
-	position: absolute;
-	bottom: 0;
-	right: 0;
+
 }
 
+@media screen and (min-width: 1000px){
+ .movies-container {
+	grid-template-columns: 1fr 1fr 1fr; 
+ }
+}
+@media screen and (max-width: 1000px) and (min-width: 700px) {
+	.movies-container {
+	   grid-template-columns: 1fr 1fr; 
+	}
+   }

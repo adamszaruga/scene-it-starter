@@ -1,12 +1,15 @@
 document.addEventListener(`DOMContentLoaded`, function() {     
     function renderMovies (movieArray) {
         movieHTML= movieArray.map(currentMovie => {
-            return `<div class="movie col-lg-3 rounded">
+            return `<div class="movie rounded">
             <img src="${currentMovie.Poster}" alt="${currentMovie.Title} poster" class="movieImage">
             <div class="movieInfo">
-            <h5>${currentMovie.Title}</h5>
+            <h5 class="movieTitle">${currentMovie.Title}</h5>
             <p class=" ">${currentMovie.Year}</p>
-            <button class="addButton btn">+</button>
+            <p class=" ">${currentMovie.Type.toUpperCase()}</p>
+            <div class="addButton">
+            <button class="btn">+</button>
+            </div>
             </div>
             </div>`
         })
