@@ -2,12 +2,9 @@ body {
 	background-color: #B2E9FD;
 }
 
-.header h2 {
-	color: #DC4247;
-}
-
-.header p {
-	color: #50524F;
+h1{
+    font-size: 40px;
+    
 }
 
 .results {
