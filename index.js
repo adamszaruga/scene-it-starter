@@ -28,6 +28,14 @@
         if (watchlist == null){
             watchlist = [];
         }
+        // check if movie already exists in 'watchlist'
+        // if it does, do something
+        // if it does not do 'watchlist.push(movie);'
+
+        //  function checkList(saveToWatchlist) =>{
+        //     if(imdb)
+        // }
+
         watchlist.push(movie);
         watchlistJSON = JSON.stringify(watchlist);
         localStorage.setItem('watchlist', watchlistJSON);
@@ -39,7 +47,7 @@
             var searchString = document.getElementsByClassName('search-bar')[0].value;
             var encodedSearchString = encodeURIComponent(searchString);
 
-            axios.get(`http://www.omdbapi.com/?apikey=3430a78&s=${encodedSearchString}`)
+            axios.get(`https://www.omdbapi.com/?apikey=3430a78&s=${encodedSearchString}`)
                 .then(function(res) {
                     movieData = res.data.Search    
                     renderMovies(res.data.Search)
