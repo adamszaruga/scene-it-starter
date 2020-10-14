@@ -1,13 +1,23 @@
 body {
     background-color: #B2E9FD;
+    background-image: url('img/memphis.png');
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Francois One', sans-serif;
 }
 
 .header h2 {
-    color: #DC4247;
+    color: #E76F51;
 }
 
 .header p {
-    color: #50524F;
+    color: #264653;
 }
 
 .results {
