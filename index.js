@@ -1,6 +1,10 @@
-document.addEventListener('DOMContentLoaded',function() {
+//WAITS FOR PAGE TO LOAD BEFORE DOING WHAT'S BELOW
+document.addEventListener('DOMContentLoaded',function() { 
+  //FUNCTION FOR GENERATING MOVIE CARDS
     function renderMovies (movieArray) {
         movieHTML = movieArray.map(function(currentMovie){
+
+          //RENDER MOVIE CARD WITH VARIABLES
             return `
             <div class="movie">
             <div class="card" style="width: 18rem;">
@@ -15,12 +19,12 @@ document.addEventListener('DOMContentLoaded',function() {
             `})
         return movieHTML.join('');
     }
-    document.querySelector('.movies-container').innerHTML = renderMovies(movieData);
-
-    // document.getElementById(‘search-form’).addEventListener(‘submit’, function(e){
-
-    //   e.preventDefault();
-    // });
-    
+    //LISTEN FOR EVENT, SHOW MOVIES
+    document.querySelector('#search-form').addEventListener('submit', function(event){
+      document.querySelector('.movies-container').innerHTML = renderMovies(movieData); 
+      event.preventDefault();
+      });
+   
 });
 
+//on branch step-3
