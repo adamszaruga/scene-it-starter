@@ -1,12 +1,10 @@
-// DOCUMENT READY BLOCK
-
-
+// FUNCTION FOR GENERATING MOVIE CARDS
 
 function renderMovies() {
     let text = "";
 
     movieData.map(function(movie) {
-
+        // RENDER MOVIE CARD WITH VARIABLES
         text += `
             <div class="movie card">
             <img class="card-img-top" src="${movie.Poster}" alt="${movie.Title}">
@@ -19,7 +17,7 @@ function renderMovies() {
 
     });
 
-    // 
+    // LISTEN FOR EVENT, SHOW MOVIES
     document.getElementById("search-form").addEventListener("submit", function(e) {
         e.preventDefault();
         document.getElementById("movie-cards").innerHTML = text;
@@ -27,7 +25,7 @@ function renderMovies() {
 
 }
 
-
+// LOAD FUNCTIONS ON PAGE LOAD
 document.addEventListener('DOMContentLoaded', function() {
 
     renderMovies();
