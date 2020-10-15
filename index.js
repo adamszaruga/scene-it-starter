@@ -1,27 +1,29 @@
 // DOCUMENT READY BLOCK
 
-document.addEventListener("DOMContentLoaded", () => {
-    renderMovies = (movieArray) => {
-        let movieHTML = movieArray.map((currentMovie) => {
-            const title = currentMovie.Title;
-            console.log(title);
-            const year = currentMovie.Year;
-            console.log(year);
-            const imdbID = currentMovie.imdbID;
-            console.log(imdbID);
-            const type = currentMovie.Type;
-            console.log(type);
-            const poster = currentMovie.Poster;
-            console.log(poster);
 
 
-        })
-        return movieHTML.join('');
-    }
+function renderMovies() {
+    let text = "";
 
-    document.getElementById('search-form').addEventListener("submit", (e) => {
-        e.preventDefault();
-        return renderMovies(movieData);
-    })
+    movieData.map(function(movie) {
+
+        text += `
+            <div class="movie card">
+            <img class="card-img-top" src="${movie.Poster}" alt="${movie.Title}">
+            <div class="card-img-overlay">
+                <h4 class="card-title">${movie.Title}</h4>
+                <p class="card-text">${movie.Year}</p>
+                <a href="#" class="btn btn-primary">Add</a>
+            </div>
+        </div>`;
+
+    });
+
+    document.getElementById("movie-cards").innerHTML = text;
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderMovies();
 
 });
