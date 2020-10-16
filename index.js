@@ -43,10 +43,8 @@ function saveToWatchlist(imdbID) {
 
     if (watchlist == null) {
         watchlist = [];
-
-
     }
-    watchlist.push(imdbID);
+    watchlist.push(movie);
     watchlistJSON = JSON.stringify(watchlist);
     localStorage.setItem("watchlist", watchlistJSON);
 
@@ -55,5 +53,4 @@ function saveToWatchlist(imdbID) {
 // LOAD FUNCTIONS ON PAGE LOAD
 document.addEventListener('DOMContentLoaded', function() {
     renderMovies();
-
 });
