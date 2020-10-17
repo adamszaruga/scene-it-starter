@@ -21,7 +21,18 @@ function renderMovies() {
 
     // LISTEN FOR EVENT, SHOW MOVIES
     document.getElementById("search-form").addEventListener("submit", function(e) {
+        // PREVENTS PAGE FROM RELOADING AFTER CLICKING SUBMIT
         e.preventDefault();
+
+        // CREATES SEARCH STRING VARIABLES, ENCODES QUERY TO MAKE IT WEB FRIENDLY (ENCODES SPACES, ETC.)
+        var searchString = document.getElementById("search-bar").value;
+        var urlEncodedSearchString = encodeURIComponent(searchString);
+
+        // USE AXIOS FOR SUBMITTING QUERY
+        axios.get("http://www.omdbapi.com/?apikey=e8083edf&s=" + urlEncodedSearchString)
+            .then(response => console.log(response.data));
+
+
         document.getElementById("movie-cards").innerHTML = movieHTML;
     })
 
