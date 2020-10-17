@@ -1,7 +1,7 @@
 // FUNCTION FOR GENERATING MOVIE CARDS
 
 function renderMovies() {
-    let movieHTML = "";
+    var movieHTML = "";
 
     movieData.map(function(currentMovie) {
 
@@ -16,6 +16,9 @@ function renderMovies() {
                 </div>`;
 
     });
+
+
+
     // LISTEN FOR ADD MOVIES CLICKS
 
 
@@ -25,12 +28,16 @@ function renderMovies() {
         e.preventDefault();
 
         // CREATES SEARCH STRING VARIABLES, ENCODES QUERY TO MAKE IT WEB FRIENDLY (ENCODES SPACES, ETC.)
-        var searchString = document.getElementById("search-bar").value;
+        var searchString = document.getElementById("search-finder").value;
+        console.log(searchString);
         var urlEncodedSearchString = encodeURIComponent(searchString);
 
         // USE AXIOS FOR SUBMITTING QUERY
         axios.get(`http://www.omdbapi.com/?apikey=${apikey}&s=` + urlEncodedSearchString)
-            .then(response => console.log(response.data));
+            .then(response => {
+                renderMovies(response.data.Search);
+
+            });
 
 
         document.getElementById("movie-cards").innerHTML = movieHTML;
