@@ -1,55 +1,60 @@
 // FUNCTION FOR GENERATING MOVIE CARDS
+var movieSearchData = [];
 
 function renderMovies() {
     var movieHTML = "";
 
-    movieData.map(function(currentMovie) {
-
-        // RENDER MOVIE CARD WITH VARIABLES
-        movieHTML += `
-            <div class="movie card">
-            <img class="card-img-top" src="${currentMovie.Poster}" alt="${currentMovie.Title}">
-            <div class="card-img-bottom">
-                <h4 class="card-title">${currentMovie.Title}</h4>
-                <p class="card-text">${currentMovie.Year}</p>
-                <a href="#" class="btn btn-info stretched-link" onclick="saveToWatchlist('${currentMovie.imdbID}')">Add</a> </div> 
-                </div>`;
-
-    });
-
-
-
-    // LISTEN FOR ADD MOVIES CLICKS
-
-
     // LISTEN FOR EVENT, SHOW MOVIES
     document.getElementById("search-form").addEventListener("submit", function(e) {
-        // PREVENTS PAGE FROM RELOADING AFTER CLICKING SUBMIT
-        e.preventDefault();
+        e.preventDefault(); // PREVENTS PAGE FROM RELOADING AFTER CLICKING SUBMIT
 
         // CREATES SEARCH STRING VARIABLES, ENCODES QUERY TO MAKE IT WEB FRIENDLY (ENCODES SPACES, ETC.)
         var searchString = document.getElementById("search-finder").value;
-        console.log(searchString);
         var urlEncodedSearchString = encodeURIComponent(searchString);
 
         // USE AXIOS FOR SUBMITTING QUERY
         axios.get(`http://www.omdbapi.com/?apikey=${apikey}&s=` + urlEncodedSearchString)
             .then(response => {
-                renderMovies(response.data.Search);
 
+                movieSearchData = response.data.Search;
+                movieSearchData.map(function(currentMovie) {
+
+                    // RENDER MOVIE CARD WITH VARIABLES
+                    movieHTML += `
+                        <div class="movie card">
+                        <img class="card-img-top" src="${currentMovie.Poster}" alt="${currentMovie.Title}">
+                        <div class="card-img-bottom">
+                            <h4 class="card-title">${currentMovie.Title}</h4>
+                            <p class="card-text">${currentMovie.Year}</p>
+                            <a href="#" class="btn btn-info stretched-link" onclick="saveToWatchlist('${currentMovie.imdbID}')">Add</a> </div> 
+                            </div>`;
+
+                });
+
+                document.getElementById("movie-cards").innerHTML = movieHTML;
             });
 
-
-        document.getElementById("movie-cards").innerHTML = movieHTML;
+        // Renders output of movieHTML to page
+        // document.getElementById("movie-cards").innerHTML = movieHTML;
     })
 
-    // document.getElementById("movie-cards").addEventListener("click", function(e) {
-    //     e.preventDefault();
-    //     saveToWatchlist();
-    // })
+    // SHOULD BE MOVIE ARRAY, AND EXPORTS HTML BLOCK WITH TEXT FROM MOVIE
+    // movieSearchData.map(function(currentMovie) {
 
+    //     // RENDER MOVIE CARD WITH VARIABLES
+    //     movieHTML += `
+    //         <div class="movie card">
+    //         <img class="card-img-top" src="${currentMovie.Poster}" alt="${currentMovie.Title}">
+    //         <div class="card-img-bottom">
+    //             <h4 class="card-title">${currentMovie.Title}</h4>
+    //             <p class="card-text">${currentMovie.Year}</p>
+    //             <a href="#" class="btn btn-info stretched-link" onclick="saveToWatchlist('${currentMovie.imdbID}')">Add</a> </div> 
+    //             </div>`;
+
+    // });
 }
 
+// SAVES MOVIE SELECTIONS TO WATCHLIST USING ADD BUTTON
 function saveToWatchlist(imdbID) {
 
     var movie = movieData.find(function(currentMovie) {
