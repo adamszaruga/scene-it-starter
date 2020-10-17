@@ -29,7 +29,7 @@ function renderMovies() {
         var urlEncodedSearchString = encodeURIComponent(searchString);
 
         // USE AXIOS FOR SUBMITTING QUERY
-        axios.get("http://www.omdbapi.com/?apikey=e8083edf&s=" + urlEncodedSearchString)
+        axios.get(`http://www.omdbapi.com/?apikey=${apikey}&s=` + urlEncodedSearchString)
             .then(response => console.log(response.data));
 
 
