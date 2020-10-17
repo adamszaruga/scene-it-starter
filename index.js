@@ -1,12 +1,12 @@
 // FUNCTION FOR GENERATING MOVIE CARDS
 
 function renderMovies() {
-    let text = "";
+    let movieHTML = "";
 
     movieData.map(function(currentMovie) {
 
         // RENDER MOVIE CARD WITH VARIABLES
-        text += `
+        movieHTML += `
             <div class="movie card">
             <img class="card-img-top" src="${currentMovie.Poster}" alt="${currentMovie.Title}">
             <div class="card-img-bottom">
@@ -22,7 +22,7 @@ function renderMovies() {
     // LISTEN FOR EVENT, SHOW MOVIES
     document.getElementById("search-form").addEventListener("submit", function(e) {
         e.preventDefault();
-        document.getElementById("movie-cards").innerHTML = text;
+        document.getElementById("movie-cards").innerHTML = movieHTML;
     })
 
     // document.getElementById("movie-cards").addEventListener("click", function(e) {
