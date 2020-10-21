@@ -1,5 +1,5 @@
 // FUNCTION FOR GENERATING MOVIE CARDS
-var movieSearchData = [];
+var movieData = [];
 
 function renderMovies() {
     var movieHTML = "";
@@ -16,8 +16,8 @@ function renderMovies() {
         axios.get(`http://www.omdbapi.com/?apikey=${apikey}&s=` + urlEncodedSearchString)
             .then(response => {
 
-                movieSearchData = response.data.Search;
-                movieSearchData.map(function(currentMovie) {
+                movieData = response.data.Search;
+                movieData.map(function(currentMovie) {
 
                     // RENDER MOVIE CARD WITH VARIABLES
                     movieHTML += `
@@ -34,24 +34,8 @@ function renderMovies() {
                 document.getElementById("movie-cards").innerHTML = movieHTML;
             });
 
-        // Renders output of movieHTML to page
-        // document.getElementById("movie-cards").innerHTML = movieHTML;
     })
 
-    // SHOULD BE MOVIE ARRAY, AND EXPORTS HTML BLOCK WITH TEXT FROM MOVIE
-    // movieSearchData.map(function(currentMovie) {
-
-    //     // RENDER MOVIE CARD WITH VARIABLES
-    //     movieHTML += `
-    //         <div class="movie card">
-    //         <img class="card-img-top" src="${currentMovie.Poster}" alt="${currentMovie.Title}">
-    //         <div class="card-img-bottom">
-    //             <h4 class="card-title">${currentMovie.Title}</h4>
-    //             <p class="card-text">${currentMovie.Year}</p>
-    //             <a href="#" class="btn btn-info stretched-link" onclick="saveToWatchlist('${currentMovie.imdbID}')">Add</a> </div> 
-    //             </div>`;
-
-    // });
 }
 
 // SAVES MOVIE SELECTIONS TO WATCHLIST USING ADD BUTTON
@@ -74,6 +58,4 @@ function saveToWatchlist(imdbID) {
 }
 
 // LOAD FUNCTIONS ON PAGE LOAD
-document.addEventListener('DOMContentLoaded', function() {
-    renderMovies();
-});
+document.addEventListener('DOMContentLoaded', renderMovies);
