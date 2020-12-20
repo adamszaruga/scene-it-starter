@@ -1,6 +1,6 @@
 body {
     background-color: #B2E9FD;
-    background-image: url('img/memphis.png');
+    background-image: url('../img/memphis.png');
     font-family: 'Didact Gothic', sans-serif;
 }
 
@@ -34,4 +34,12 @@ h5 {
 
 .movie {
     width: 25%;
+}
+
+.movies-container {
+    margin: 50px auto;
+}
+
+.footer {
+    margin: 50px auto;
 }

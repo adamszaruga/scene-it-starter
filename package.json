@@ -1,0 +1,28 @@
+{
+    "name": "scene-it-starter",
+    "version": "1.0.0",
+    "description": "A simple movie watch list app served with Express and using HTML/CSS",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jnutterdev/scene-it-starter.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jnutterdev/scene-it-starter/issues"
+    },
+    "homepage": "https://github.com/jnutterdev/scene-it-starter#readme",
+    "dependencies": {
+        "axios": "^0.21.0",
+        "bootstrap": "^4.5.3",
+        "dotenv": "^8.2.0",
+        "ejs": "^3.1.5",
+        "express": "^4.17.1",
+        "express-validator": "^6.8.0"
+    }
+}
