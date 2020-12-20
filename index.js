@@ -1,4 +1,6 @@
 // FUNCTION FOR GENERATING MOVIE CARDS
+const apikey = process.env.APIKEY
+
 var movieData = [];
 
 function renderMovies() {
