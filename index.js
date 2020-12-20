@@ -1,5 +1,5 @@
 // FUNCTION FOR GENERATING MOVIE CARDS
-const apikey = process.env.APIKEY
+const apikey = process.env.APIKEY;
 
 var movieData = [];
 
