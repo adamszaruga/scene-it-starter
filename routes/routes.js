@@ -3,28 +3,20 @@ const router = express.Router();
 const search = require("../controllers/controllers");
 const axios = require("axios");
 const apikey = process.env.APIKEY;
-router.use(express.urlencoded({
-    extended: true
-}));
+// router.use(express.urlencoded({
+//     extended: true
+// }));
 
-// router.get("/search", (req, res) => {
-
-//     // axios.get(`http://www.omdbapi.com/?apikey=${apikey}&s=${moviename}`)
-//     //     .then((res) => {
-//     //         console.log(res.data);
-//     //     });
-
-//     res.render('home', { qs: req.body });
-// });
 
 router.post("/search", (req, res) => {
+    const moviename = req.body.title.split(' ').join('+');
+    axios.get(`http://www.omdbapi.com/?apikey=${apikey}&s=${moviename}`)
+        .then((res) => {
+            console.log(res.data);
+        });
 
-    // axios.get(`http://www.omdbapi.com/?apikey=${apikey}&s=${moviename}`)
-    //     .then((res) => {
-    //         console.log(res.data);
-    //     });
-    const username = req.body.title;
-    console.log(username);
+
+    console.log(moviename);
     res.render('home');
     res.end();
 });
