@@ -1,25 +1,6 @@
-const axios = require("axios");
-const apikey = process.env.APIKEY;
-
-
-
-
-
 exports.findMovies = (req, res) => {
 
-    const moviename = req.body.Title;
-
-    try {
-        axios.get(`http://www.omdbapi.com/?apikey=${apikey}&s=${moviename}`)
-            .then(data => res.status(200).send(data))
-            .catch(err => res.send(err));
-    } catch (err) {
-        console.error("No movie found", err);
-    }
-    console.log(moviename);
-    res.render('home');
-
-
+    res.render('home', { moviename: "my movie" });
 };
 
 
