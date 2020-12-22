@@ -1,30 +1,46 @@
 const express = require('express');
-const router = express.Router();
-const search = require("../controllers/controllers");
+const movieRouter = express.Router();
+// const search = require("../controllers/controllers");
 const axios = require("axios");
 const apikey = process.env.APIKEY;
-// router.use(express.urlencoded({
-//     extended: true
-// }));
 
 
-router.post("/search", (req, res) => {
-    const moviename = req.body.title.split(' ').join('+');
-    axios.get(`http://www.omdbapi.com/?apikey=${apikey}&s=${moviename}`)
-        .then((res) => {
-            console.log(res.data);
+const options = {
+    method: "get",
+    url: `http://www.omdbapi.com/?apikey=e8083edf&t=ninth+gate`
+
+};
+
+movieRouter.get("", async(req, res) => {
+
+    try {
+        // const moviename = req.body.title.split(' ').join('+');
+        const movieAPI = await axios.request(options);
+
+        let movie = Object.entries(movieAPI.data).forEach((key) => {
+            return key
         });
 
+        res.render('home', { movie: movieAPI.data });
 
-    console.log(moviename);
-    res.render('home');
-    res.end();
+    } catch (err) {
+        if (err.response) {
+            console.log(err.response.data);
+            // console.log(err.response.status)
+            // console.log(err.response.headers)
+        } else if (err.request) {
+            console.log(err.request);
+        } else {
+            console.error("Error", err.message);
+        }
+    }
+
+    res.end()
 });
 
-router.get("/", search.returnMovies);
 
-router.get("/watchlist", search.savedMovies);
+// movieRouter.get("/", search.returnMovies);
 
+// movieRouter.get("/watchlist", search.savedMovies);
 
-
-module.exports = router;
+module.exports = movieRouter
