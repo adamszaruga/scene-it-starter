@@ -21,11 +21,10 @@
            
              <% movieData.forEach(function(item){ %>
              <div class="card-container">
-                <h3><%= item.Title %></h3>
+                <h5><%= item.Title %></h5>
                 <% if (item.Poster == "N/A") { %>
-                    <img src="https://via.placeholder.com/300x400" alt="<%= item.Title %>" />
+                    <img src="https://via.placeholder.com/260x360" alt="<%= item.Title %>" />
                 <% } else { %>
-                
                 <img src="<%= item.Poster %>" alt="<%= item.Title %>" />
                 <% } %>
                  </div>

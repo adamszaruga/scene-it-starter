@@ -58,3 +58,8 @@ h5 {
     display: inline-block;
     margin: 30px;
 }
+
+img {
+    max-width: 300px;
+    max-height: 400px;
+}
