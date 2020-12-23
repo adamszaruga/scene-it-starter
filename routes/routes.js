@@ -7,7 +7,7 @@ const apikey = process.env.APIKEY;
 
 const options = {
     method: "get",
-    url: `http://www.omdbapi.com/?apikey=e8083edf&t=ninth+gate`
+    url: `http://www.omdbapi.com/?apikey=e8083edf&s=gremlins`
 
 };
 
@@ -17,17 +17,13 @@ movieRouter.get("", async(req, res) => {
         // const moviename = req.body.title.split(' ').join('+');
         const movieAPI = await axios.request(options);
 
-        let movie = Object.entries(movieAPI.data).forEach((key) => {
-            return key
-        });
+        const moviesData = movieAPI.data;
 
-        res.render('home', { movie: movieAPI.data });
+        res.render('home', { movieData: moviesData.Search });
 
     } catch (err) {
         if (err.response) {
             console.log(err.response.data);
-            // console.log(err.response.status)
-            // console.log(err.response.headers)
         } else if (err.request) {
             console.log(err.request);
         } else {
@@ -35,7 +31,7 @@ movieRouter.get("", async(req, res) => {
         }
     }
 
-    res.end()
+    res.end();
 });
 
 
@@ -43,4 +39,4 @@ movieRouter.get("", async(req, res) => {
 
 // movieRouter.get("/watchlist", search.savedMovies);
 
-module.exports = movieRouter
+module.exports = movieRouter;

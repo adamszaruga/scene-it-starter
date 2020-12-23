@@ -10,8 +10,8 @@ app.use(express.urlencoded({
 
 // static files
 app.use(express.static('public'));
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/js'));
+// app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+// app.use('/js', express.static(__dirname + '/node_modules/bootstrap/js'));
 
 
 // templating engines

@@ -47,3 +47,14 @@ h5 {
 .navbar {
     background-color: #FFE19C;
 }
+
+.card-layouts {
+    display: grid;
+    grid-column-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.card-container {
+    display: inline-block;
+    margin: 30px;
+}
