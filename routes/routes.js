@@ -5,21 +5,34 @@ const axios = require("axios");
 const apikey = process.env.APIKEY;
 
 
-const options = {
-    method: "get",
-    url: `http://www.omdbapi.com/?apikey=e8083edf&s=gremlins`
 
-};
 
-movieRouter.get("", async(req, res) => {
+movieRouter.get("/", (req, res) => {
+
+    res.render('home');
+
+});
+
+// Form method GET uses req.query
+// Form method POST uses req.body
+
+movieRouter.get("/movie-search", async(req, res) => {
 
     try {
-        // const moviename = req.body.title.split(' ').join('+');
-        const movieAPI = await axios.request(options);
 
+        // const moviename = req.query.title.split(' ').join('+');
+        const moviename = req.query.title.split(' ').join('+');
+        const options = {
+            method: "get",
+            url: `http://www.omdbapi.com/?apikey=e8083edf&s=${moviename}`
+
+        };
+
+        const movieAPI = await axios.request(options);
         const moviesData = movieAPI.data;
 
-        res.render('home', { movieData: moviesData.Search });
+        res.render('search', { movieData: moviesData.Search });
+        // return res.send(moviename);
 
     } catch (err) {
         if (err.response) {
@@ -32,11 +45,8 @@ movieRouter.get("", async(req, res) => {
     }
 
     res.end();
-});
+})
 
 
-// movieRouter.get("/", search.returnMovies);
-
-// movieRouter.get("/watchlist", search.savedMovies);
 
 module.exports = movieRouter;

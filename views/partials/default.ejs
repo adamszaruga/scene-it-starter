@@ -18,23 +18,11 @@
         <div class="col-12 results">
             <div class="card-layouts">
 
-                <% if (movieData) { %>
-                    <% movieData.forEach(function(item){ %>
-                        <div class="card-container">
-                            <h5>
-                                <%= item.Title %>
-                            </h5>
-                            <% if (item.Poster == "N/A") { %>
-                                <img src="https://via.placeholder.com/260x360" alt="<%= item.Title %>" />
-                                <% } else { %>
-                                    <img src="<%= item.Poster %>" alt="<%= item.Title %>" />
-                                    <% } %>
-                        </div>
-                        <% }) %>
 
-                            <% } else { %>
-                                <p>Search for a movie!</p>
-                                <% } %>
+                <div class="card-container">
+                    <p>Search for a movie!</p>
+                </div>
+
 
             </div>
         </div>
