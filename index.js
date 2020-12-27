@@ -11,7 +11,7 @@ app.use(express.urlencoded({
 }));
 
 // static files
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(express.static('public'));
 // app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 // app.use('/js', express.static(__dirname + '/node_modules/bootstrap/js'));
