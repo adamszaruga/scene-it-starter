@@ -9,7 +9,7 @@ const apikey = process.env.APIKEY;
 
 movieRouter.get("/", (req, res) => {
 
-    res.render('home');
+    res.render('partials/default', { layout: './home' });
 
 });
 
@@ -31,7 +31,7 @@ movieRouter.get("/movie-search", async(req, res) => {
         const movieAPI = await axios.request(options);
         const moviesData = movieAPI.data;
 
-        res.render('search', { movieData: moviesData.Search });
+        res.render('partials/search', { movieData: moviesData.Search, layout: './home' });
         // return res.send(moviename);
 
     } catch (err) {

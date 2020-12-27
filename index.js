@@ -15,10 +15,11 @@ app.use(express.static('public'));
 
 
 // templating engines
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', './views');
 app.set('view engine', 'ejs');
 
 // set main movie routes
+app.set('home', 'home');
 const movieRouter = require('./routes/routes');
 app.use('/', movieRouter)
 
