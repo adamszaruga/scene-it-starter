@@ -7,9 +7,9 @@ const apikey = process.env.APIKEY;
 
 
 
-movieRouter.get("/", (req, res) => {
+movieRouter.get("", (req, res) => {
 
-    res.render('partials/default', { layout: './home' });
+    res.render('./partials/default');
 
 });
 
@@ -24,14 +24,14 @@ movieRouter.get("/movie-search", async(req, res) => {
         const moviename = req.query.title.split(' ').join('+');
         const options = {
             method: "get",
-            url: `http://www.omdbapi.com/?apikey=e8083edf&s=${moviename}`
+            url: `http://www.omdbapi.com/?apikey=${apikey}&s=${moviename}`
 
         };
 
         const movieAPI = await axios.request(options);
         const moviesData = movieAPI.data;
 
-        res.render('partials/search', { movieData: moviesData.Search, layout: './home' });
+        res.render('search', { movieData: moviesData.Search });
         // return res.send(moviename);
 
     } catch (err) {
