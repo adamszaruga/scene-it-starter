@@ -1,0 +1,18 @@
+<% if (movieData) { %>
+    <% movieData.forEach(function(item){ %>
+        <div class="card-container">
+            <h5>
+                <%= item.Title %>
+            </h5>
+            <% if (item.Poster == "N/A") { %>
+                <img src="img/movie-poster.png" alt="<%= item.Title %>" width="300" height="400" />
+                <% } else { %>
+                    <a href="api/watchlist/<%- item.imdbID %>"><img src="<%= item.Poster %>" alt="<%= item.Title %>" /></a>
+
+                    <% } %>
+        </div>
+        <% }) %>
+
+            <% } else { %>
+                <p>Search for a movie!</p>
+                <% } %>

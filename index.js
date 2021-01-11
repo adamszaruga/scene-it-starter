@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const app = express();
@@ -9,7 +10,7 @@ const PORT = process.env.PORT || 8080;
 const path = require('path');
 const keys = require('./configs/keys');
 
-// app.use(cors());
+app.use(cors());
 
 app.use(bodyParser.json());
 
@@ -30,9 +31,6 @@ app.use(express.urlencoded({
 // static files
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(express.static('public'));
-// app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
-// app.use('/js', express.static(__dirname + '/node_modules/bootstrap/js'));
-
 
 // templating engines
 app.use(expressLayouts);
@@ -42,9 +40,6 @@ app.set('view engine', 'ejs');
 // set main movie routes
 const movieRouter = require('./routes/routes');
 app.use('/', movieRouter);
-
-const movieWatchlist = require('./routes/watchlist');
-app.use('/api', movieWatchlist);
 
 // main listening
 app.listen(PORT, () => {

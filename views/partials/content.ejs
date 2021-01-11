@@ -27,7 +27,8 @@
                             <% if (item.Poster == "N/A") { %>
                                 <img src="img/movie-poster.png" alt="<%= item.Title %>" width="300" height="400" />
                                 <% } else { %>
-                                    <img src="<%= item.Poster %>" alt="<%= item.Title %>" />
+                                    <a href="api/watchlist/<%- item.imdbID %>"><img src="<%= item.Poster %>" alt="<%= item.Title %>" /></a>
+
                                     <% } %>
                         </div>
                         <% }) %>

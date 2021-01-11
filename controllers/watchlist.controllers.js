@@ -1,17 +1,20 @@
+const axios = require("axios");
+const apikey = process.env.APIKEY;
+
 const mongoose = require('mongoose');
 const Watchlist = mongoose.model('Watchlist');
-const router = require('express').Router();
+// const router = require('express').Router();
 
 // articles = movies, article = movie
 
-    router.get('/watchlist', async (req, res) => {
+   exports.getWatchlist = async (req, res) => {
         const movies = await Watchlist.find().cache({ expire: 10});
         const movieList = await db.collection.get('watchlist').find({}).toArray();
 
         res.render('./partials/movieDetails', { movieData: movieList});
-    });
+    };
 
-    router.post('/watchlist', async (req, res) => {
+    exports.addMovieToWatchList = async (req, res) => {
         const { Title, Genre, Rated, Released, Runtime, Plot, Poster, imdbID } = req.body;
 
         if ( !Title || !Poster || !imdbID ) {
@@ -35,31 +38,31 @@ const router = require('express').Router();
         } catch (err) {
             res.status(400).send(err.message);
         }
-    });
+    };
 
-    router.post('/watchlist/:id', async (req, res) => {
-        const { id } = req.body;
-        // const movies = await Watchlist.find().cache({ expire: 10});
-        console.log(id);
+    // router.post('/watchlist/:id', async (req, res) => {
+    //     const { id } = req.body;
+    //     // const movies = await Watchlist.find().cache({ expire: 10});
+    //     console.log(id);
 
-        const movie = new Watchlist({
-            Title, 
-            Genre, 
-            Rated, 
-            Released, 
-            Runtime, 
-            Plot, 
-            Poster, 
-            imdbID
-        });
+    //     const movie = new Watchlist({
+    //         Title, 
+    //         Genre, 
+    //         Rated, 
+    //         Released, 
+    //         Runtime, 
+    //         Plot, 
+    //         Poster, 
+    //         imdbID
+    //     });
 
-        try {
-            // await movie.save();
-           await res.render('./partials/movieDetails', { movieData: movie});
-        } catch (err) {
-            res.status(400).send(err.message);
-        }
+    //     try {
+    //         // await movie.save();
+    //        await res.render('./partials/movieDetails', { movieData: movie});
+    //     } catch (err) {
+    //         res.status(400).send(err.message);
+    //     }
 
-    });
+    // });
 
-    module.exports = router;
+    // module.exports = router;
