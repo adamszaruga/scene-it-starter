@@ -1,5 +1,4 @@
 const axios = require("axios");
-const mcache = require('memory-cache');
 const apikey = process.env.APIKEY;
 
 
@@ -17,7 +16,6 @@ exports.movieSearch = async(req, res) => {
 
     try {
 
-        // const moviename = req.query.title.split(' ').join('+');
         const moviename = req.query.title.split(' ').join('+');
         
         const options = {
@@ -29,12 +27,8 @@ exports.movieSearch = async(req, res) => {
         const movieAPI = await axios.request(options);
         const moviesData = movieAPI.data;
 
-    
-
-       
-
         res.render('./partials/content', { movieData: moviesData.Search });
-        // return res.send(moviename);
+       
 
     } catch (err) {
         if (err.response) {
@@ -50,44 +44,3 @@ exports.movieSearch = async(req, res) => {
 
 };
 
-
-exports.savedMovies = (req, res) => {
-
-    res.render('watchlist');
-
-};
-
-
-
-
-
-
-
-
-// axios.get(`http://www.omdbapi.com/?apikey=${apikey}&s=` + urlEncodedSearchString)
-// .then(response => {
-
-//     movieData = response.data.Search;
-//     movieData.map(function(currentMovie) {
-
-//         // RENDER MOVIE CARD WITH VARIABLES
-//         movieHTML += `
-//         <div class="movie card">
-//         <img class="card-img-top" src="${currentMovie.Poster}" alt="${currentMovie.Title}">
-//         <div class="card-img-bottom">
-//             <h4 class="card-title">${currentMovie.Title}</h4>
-//             <p class="card-text">${currentMovie.Year}</p>
-//             <a href="#" class="btn btn-info stretched-link" onclick="saveToWatchlist('${currentMovie.imdbID}')">Add</a> </div> 
-//             </div>`;
-
-//     });
-
-//     document.getElementById("movie-cards").innerHTML = movieHTML;
-// });
-
-// })
-// .catch(err => {
-// res.status(500).send({
-// message: err.message || "Some error occurred while retrieving tutorials."
-// });
-// });
