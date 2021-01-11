@@ -1,68 +1,51 @@
 const axios = require("axios");
 const apikey = process.env.APIKEY;
-
 const mongoose = require('mongoose');
 const Watchlist = mongoose.model('Watchlist');
-// const router = require('express').Router();
 
-// articles = movies, article = movie
 
-   exports.getWatchlist = async (req, res) => {
+
+// GET main list of movies saved in watchlist
+exports.getWatchlist = async (req, res) => {
+    
+    try {
         const movies = await Watchlist.find().cache({ expire: 10});
-        const movieList = await db.collection.get('watchlist').find({}).toArray();
+        res.render('./partials/content', { movieData: movies});
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
+};
 
-        res.render('./partials/movieDetails', { movieData: movieList});
-    };
+// GET infomration for a specific movie saved to watchlist
 
-    exports.addMovieToWatchList = async (req, res) => {
-        const { Title, Genre, Rated, Released, Runtime, Plot, Poster, imdbID } = req.body;
+exports.getMovieFromWatchlist = async(req, res) => {
+    return;
+};
 
-        if ( !Title || !Poster || !imdbID ) {
-            return res.status(400).send('Missing Title, Poster, or imdbID');
-        }
+// POST a new movie to the watchlist
 
-             const movie = new Watchlist({
-            Title, 
-            Genre, 
-            Rated, 
-            Released, 
-            Runtime, 
-            Plot, 
-            Poster, 
-            imdbID
-        });
+exports.addMovieToWatchList = async (req, res) => {
+    const { Title, Genre, Rated, Released, Runtime, Plot, Poster, imdbID } = req.body;
 
-        try {
-            await movie.save();
-            res.send(movie);
-        } catch (err) {
-            res.status(400).send(err.message);
-        }
-    };
+    if ( !Title || !Poster || !imdbID ) {
+        return res.status(400).send('Missing Title, Poster, or imdbID');
+    }
 
-    // router.post('/watchlist/:id', async (req, res) => {
-    //     const { id } = req.body;
-    //     // const movies = await Watchlist.find().cache({ expire: 10});
-    //     console.log(id);
+            const movie = new Watchlist({
+        Title, 
+        Genre, 
+        Rated, 
+        Released, 
+        Runtime, 
+        Plot, 
+        Poster, 
+        imdbID
+    });
 
-    //     const movie = new Watchlist({
-    //         Title, 
-    //         Genre, 
-    //         Rated, 
-    //         Released, 
-    //         Runtime, 
-    //         Plot, 
-    //         Poster, 
-    //         imdbID
-    //     });
-
-    //     try {
-    //         // await movie.save();
-    //        await res.render('./partials/movieDetails', { movieData: movie});
-    //     } catch (err) {
-    //         res.status(400).send(err.message);
-    //     }
-
-    // });
-
-    // module.exports = router;
+    try {
+        await movie.save();
+        res.send(movie);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
+};

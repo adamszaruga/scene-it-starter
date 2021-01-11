@@ -7,7 +7,7 @@
     </div>
     <div class="row">
         <div class="col-12 search">
-            <form id="movietitle" name="movietitle" action="/movie-search" method="GET">
+            <form id="movietitle" name="movietitle" action="/search" method="GET">
                 <div class="input-group input-group-lg">
                     <input class="form-control search-bar" placeholder="Search for a movie title..." id="title" name="title"> <button class="btn btn-primary input-group-btn" type="submit">Search</button>
                 </div>
@@ -27,7 +27,7 @@
                             <% if (item.Poster == "N/A") { %>
                                 <img src="img/movie-poster.png" alt="<%= item.Title %>" width="300" height="400" />
                                 <% } else { %>
-                                    <a href="api/watchlist/<%- item.imdbID %>"><img src="<%= item.Poster %>" alt="<%= item.Title %>" /></a>
+                                    <a href="/<%- item.imdbID %>"><img src="<%= item.Poster %>" alt="<%= item.Title %>" /></a>
 
                                     <% } %>
                         </div>

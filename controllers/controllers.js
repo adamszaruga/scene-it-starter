@@ -1,17 +1,15 @@
 const axios = require("axios");
 const apikey = process.env.APIKEY;
 
-
-
 // Form method GET uses req.query
 // Form method POST uses req.body
 
-
+// Render main home page
 exports.mainHome = (req, res) => {
     res.render('./partials/default');
 };
 
-
+// Main movie serch controller
 exports.movieSearch = async(req, res) => {
 
     try {
