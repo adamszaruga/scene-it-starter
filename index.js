@@ -1,10 +1,19 @@
 require('dotenv').config()
 const express = require('express');
+const mongoose = require('mongoose');
 const favicon = require('serve-favicon');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const PORT = process.env.PORT || 8080;
 const path = require('path');
+const keys = require('./configs/keys');
+
+require('./models/Watchlist');
+require('./utils/redis');
+
+mongoose.connect(keys.MONGO_URI, { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true });
 
 app.use(express.urlencoded({
     extended: true
@@ -24,7 +33,6 @@ app.set('view engine', 'ejs');
 
 // set main movie routes
 const movieRouter = require('./routes/routes');
-const movieModel = require('./models/model');
 app.use('/', movieRouter)
 
 // main listening
