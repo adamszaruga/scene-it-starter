@@ -1,5 +1,7 @@
 const axios = require("axios");
+const mcache = require('memory-cache');
 const apikey = process.env.APIKEY;
+
 
 
 // Form method GET uses req.query
@@ -17,6 +19,7 @@ exports.movieSearch = async(req, res) => {
 
         // const moviename = req.query.title.split(' ').join('+');
         const moviename = req.query.title.split(' ').join('+');
+        
         const options = {
             method: "get",
             url: `http://www.omdbapi.com/?apikey=${apikey}&s=${moviename}`
@@ -25,6 +28,10 @@ exports.movieSearch = async(req, res) => {
 
         const movieAPI = await axios.request(options);
         const moviesData = movieAPI.data;
+
+    
+
+       
 
         res.render('./partials/content', { movieData: moviesData.Search });
         // return res.send(moviename);

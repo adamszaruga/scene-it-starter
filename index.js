@@ -24,6 +24,7 @@ app.set('view engine', 'ejs');
 
 // set main movie routes
 const movieRouter = require('./routes/routes');
+const movieModel = require('./models/model');
 app.use('/', movieRouter)
 
 // main listening
