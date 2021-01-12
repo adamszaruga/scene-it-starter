@@ -26,15 +26,19 @@
                             </h5>
                             <% if (item.Poster == "N/A") { %>
                                 <img src="img/movie-poster.png" alt="<%= item.Title %>" width="300" height="400" />
+                                <a href="/watchlist/<%= item.imdbID %>">Add movie to watchlist</a>
                                 <% } else { %>
-                                    <a href="/<%- item.imdbID %>"><img src="<%= item.Poster %>" alt="<%= item.Title %>" /></a>
+                                    <img src="<%= item.Poster %>" alt="<%= item.Title %>" />
+                                    <form action="/watchlist/<%= item.imdbID %>" method="post">
+                                        <button type="submit" class="btn btn-primary">Add movie</button>
+                                    </form>
 
                                     <% } %>
                         </div>
                         <% }) %>
 
                             <% } else { %>
-                                <p>Search for a movie!</p>
+                                <p class="alert alert-warning">Movie search had no results!</p>
                                 <% } %>
 
             </div>

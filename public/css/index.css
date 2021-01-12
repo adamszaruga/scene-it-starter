@@ -1,6 +1,6 @@
 body {
     background-color: #fff;
-    background-image: url('../img/memphis.png');
+    /* background-image: url('../img/memphis.png'); */
     font-family: 'Didact Gothic', sans-serif;
 }
 
@@ -62,4 +62,5 @@ h5 {
 img {
     max-width: 300px;
     max-height: 400px;
+    display: block;
 }
