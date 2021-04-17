@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  border: 2px solid rgb(109, 103, 103);
+}
+
+.answer {
+  width: 195px;
+  padding-right: 45px;
+}
+
+.third {
+  border: 5px solid rgb(109, 103, 103);
+  /* reduce padding to accommodate the thicker border applied */
+  padding-right: 30px
+}

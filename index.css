@@ -11,6 +11,18 @@ body {
 }
 
 .results {
+	display: flex;
+	max-width: 100%;
 	margin-top: 20px;
 }
 
+.movies-container {
+	flex: 1 1 auto;
+	flex-wrap: wrap;
+	display: flex;
+	align-items: stretch;
+}
+
+.movie {
+
+}
