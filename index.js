@@ -16,11 +16,19 @@ document.addEventListener("DOMContentLoaded", () => {
     axios
     .get(`https://www.omdbapi.com/?apikey=1fddd0bf&s=${urlEncodedSearchString}`)
     .then(response => {
-        content.innerHTML = renderMovies(response.data.Search);
-        // console.log("response data:", response.data);
-        var addMoviebtns = document.querySelectorAll("add-movie");
-        // html collection
-        console.log("addMovie:", addMovie);
+      content.innerHTML = renderMovies(response.data.Search);
+      // console.log("response data:", response.data);
+      var addMovieBtns = document.querySelectorAll(".add-movie");
+      // html collection -https://flaviocopes.com/add-click-event-to-dom-list/
+      console.log("addMovieBtns", addMovieBtns);
+      
+      for (let addMovieBtn of addMovieBtns) {
+        addMovieBtn.addEventListener('click', e => {
+          e.preventDefault();
+          console.log("clicked add movie button!");
+        });
+      }
+      
     });
   });
 });
@@ -34,7 +42,7 @@ function renderMovies(movies) {
           <div class="card-body">
             <span class="badge badge-secondary">${movie.Year}</span>
             <h5 class="card-title">${movie.Title}</h5>
-            <a href="#" class="btn btn-primary add-movie">Add</a>
+            <button class="btn btn-primary add-movie">Add</a>
           </div>
         </div>
       </div>
