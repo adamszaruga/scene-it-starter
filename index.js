@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var urlEncodedSearchString = encodeURIComponent(searchString);
 
     axios
-    .get(`http://www.omdbapi.com/?apikey=1fddd0bf&s=${urlEncodedSearchString}`)
+    .get(`https://www.omdbapi.com/?apikey=1fddd0bf&s=${urlEncodedSearchString}`)
     .then(response => {
         content.innerHTML = renderMovies(response.data.Search);
         // console.log("response data:", response.data);
