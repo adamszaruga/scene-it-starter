@@ -11,18 +11,19 @@ body {
 }
 
 .results {
-	display: flex;
-	max-width: 100%;
 	margin-top: 20px;
 }
 
 .movies-container {
-	flex: 1 1 auto;
-	flex-wrap: wrap;
 	display: flex;
-	align-items: stretch;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 .movie {
+	margin-bottom: 5px;
+}
 
+.badge {
+	float: right;
 }
