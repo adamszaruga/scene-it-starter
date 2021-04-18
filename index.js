@@ -17,36 +17,32 @@ document.addEventListener("DOMContentLoaded", () => {
     .get(`https://www.omdbapi.com/?apikey=1fddd0bf&s=${urlEncodedSearchString}`)
     .then(response => {
       content.innerHTML = renderMovies(response.data.Search);
-      // console.log("response data:", response.data);
+      console.log("response data:", response.data);
       var addMovieBtns = document.querySelectorAll(".add-movie");
-      // html collection -https://flaviocopes.com/add-click-event-to-dom-list/
-      console.log("addMovieBtns", addMovieBtns);
-      
-      for (let addMovieBtn of addMovieBtns) {
-        addMovieBtn.addEventListener('click', e => {
-          e.preventDefault();
-          console.log("clicked add movie button!");
-        });
-      }
-      
+
+
     });
   });
 });
 
-function renderMovies(movies) {
-  let moviesHTML = movies.map(function(movie){
+let renderMovies = movies => {
+  let moviesHTML = movies.map(movie => {
     return `
       <div class="movie">
         <div class="card" style="width: 18rem;">
-          <img src="${movie.Poster}" class="card-img-top" alt="kitten">
+          <img src="${movie.Poster}" class="card-img-top" alt="${movie.Title}">
           <div class="card-body">
             <span class="badge badge-secondary">${movie.Year}</span>
             <h5 class="card-title">${movie.Title}</h5>
-            <button class="btn btn-primary add-movie">Add</a>
+            <button class="btn btn-primary add-movie" onclick="saveToWatchlist(${movie.imdbID.toString()})" >Add</a>
           </div>
         </div>
       </div>
     `;
   });
   return moviesHTML.join("");
+}
+
+let saveToWatchlist = imdbID => {
+  console.log("clicked movie imdbID: ", imdbID);
 }
