@@ -17,14 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
     .get(`https://www.omdbapi.com/?apikey=1fddd0bf&s=${urlEncodedSearchString}`)
     .then(response => {
       content.innerHTML = renderMovies(response.data.Search);
-      console.log("response data:", response.data);
-      var addMovieBtns = document.querySelectorAll(".add-movie");
-
-
+      // console.log("response data:", response.data);
+      // var addMovieBtns = document.querySelectorAll(".add-movie");
     });
   });
 });
 
+// show movies
 let renderMovies = movies => {
   let moviesHTML = movies.map(movie => {
     return `
@@ -42,6 +41,20 @@ let renderMovies = movies => {
   });
   return moviesHTML.join("");
 }
+
+/**
+ * if no image is availabe do this: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+
+          <img 
+            src="${movie.Poster} ? ${movie.Poster} : './no_image.png'" 
+            class="card-img-top" 
+            alt="${movie.Poster} ? ${movie.Title} : 'sorry, no image available'"
+          >
+if no img =>
+		<img src="./no_image.png" alt="sorry, no image">
+ * 
+ */
+
 
 let saveToWatchlist = imdbID => {
   console.log("clicked movie imdbID: ", imdbID);
