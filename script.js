@@ -11,7 +11,7 @@ const renderCard = data => {
     card.innerHTML = `
       <div class="movie">
           <div class="card" style="width: 18rem;">
-              <img src=${item.imageURL}
+              <img src=${item.imageURL ? item.imageURL : './no_image.png'}
               class="card-img-top" alt=${item.title}>
               <div class="card-body">
                   <span class="badge badge-secondary">${item.date}</span>
@@ -23,8 +23,13 @@ const renderCard = data => {
     `;
     cards.appendChild(card);
   });
+  
+  window.addEventListener("error", (e) => {
+    console.log('e:', e);
+    if(e.type === "error" && e.target === img){
 
-
+    }
+  }, true)
 };
 
 const button = document.getElementById("button");
