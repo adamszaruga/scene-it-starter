@@ -6,12 +6,18 @@ const fetchData = url => {
 const renderCard = data => {
   const cards = document.getElementById('cards');
 
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+  // https://medium.com/javascript-scene/nested-ternaries-are-great-361bddd0f340
   const someArr = data.map(item => {
     const card = document.createElement('div');
     card.innerHTML = `
       <div class="movie">
           <div class="card" style="width: 18rem;">
-              <img src=${item.imageURL ? item.imageURL : './no_image.png'}
+              <img src=${
+                (!item.imageURL) ? './no_image.png'
+                : item.imageURL && window.addEventListener("error", e => {return e;}, true) && (e.type === "error" && e.target === img) ? './no_image.png'
+                : item.imageURL
+              }
               class="card-img-top" alt=${item.title}>
               <div class="card-body">
                   <span class="badge badge-secondary">${item.date}</span>
@@ -26,9 +32,9 @@ const renderCard = data => {
   
   window.addEventListener("error", (e) => {
     console.log('e:', e);
-    if(e.type === "error" && e.target === img){
+    // if(e.type === "error" && e.target === img){
 
-    }
+    // }
   }, true)
 };
 
