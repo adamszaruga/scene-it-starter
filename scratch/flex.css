@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+}
+
+nav p {
+  padding-right: 9px;
+}
+.container {
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.box {
+  display: flex;
+  gap: 1em;
+  align-items: stretch;
+  flex-direction: row;
+}
+
+.box-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-item {
+  background: bisque;
+  height: 30px;
+  width: 70px;
+  border: 2px black solid;
+  text-align: center;
+}
