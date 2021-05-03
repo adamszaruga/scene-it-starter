@@ -22,5 +22,18 @@ https://codepen.io/heggy231/pen/jOypQqp
 
 * [scene-it starter code](https://github.com/adamszaruga/scene-it-starter)
 
-
+#### mock html starter template
+```html
+<div class="movie">
+    <div class="card" style="width: 18rem;">
+        <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg" 
+        class="card-img-top" alt="The Dark Knight">
+        <div class="card-body">
+            <span class="badge badge-secondary">2008</span>
+            <h5 class="card-title">The Dark Knight</h5>
+            <button class="btn btn-primary add-movie" onclick="saveToWatchlist('tt0468569')"></button>
+        </div>
+    </div>
+</div>
+```
 
