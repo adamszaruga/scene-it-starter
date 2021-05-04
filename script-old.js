@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     axios
     .get(`https://www.omdbapi.com/?apikey=1fddd0bf&s=${urlEncodedSearchString}`)
     .then(response => {
+      content.innerHTML = `<img src='./grumpy.gif'>`;
       content.innerHTML = renderMovies(response.data.Search);
       // console.log("response data:", response.data);
       // var addMovieBtns = document.querySelectorAll(".add-movie");
@@ -29,7 +30,7 @@ let renderMovies = movies => {
     return `
       <div class="movie">
         <div class="card" style="width: 18rem;">
-          <img src="${movie.Poster}" class="card-img-top" alt="${movie.Title}">
+          <img src="${movie.Poster ? movie.Poster : './no_image.png'}" class="card-img-top" alt="${movie.Title}">
           <div class="card-body">
             <span class="badge badge-secondary">${movie.Year}</span>
             <h5 class="card-title">${movie.Title}</h5>
