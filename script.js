@@ -13,11 +13,11 @@ const renderCard = data => {
     card.innerHTML = `
       <div class="movie">
           <div class="card" style="width: 18rem;">
-              <img src=${
+              <img src="${
                 (!item.imageURL) ? './no_image.png'
                 : item.imageURL && window.addEventListener("error", e => {return e;}, true) && (e.type === "error" && e.target === img) ? './no_image.png'
                 : item.imageURL
-              }
+              }"
               class="card-img-top" alt=${item.title}>
               <div class="card-body">
                   <span class="badge badge-secondary">${item.date}</span>
