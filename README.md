@@ -5,6 +5,7 @@
 
 ## [scene it part 2](https://www.notion.so/samuraijane/15-38393232e23e4ab890d3f978902fd146)
 
+
 ### bug
 1. not calling saveToAdd function
 https://codepen.io/heggy231/pen/jOypQqp
@@ -36,4 +37,24 @@ https://codepen.io/heggy231/pen/jOypQqp
     </div>
 </div>
 ```
+
+### Todo: 
+3) SceneIt-Part3-Step 3- Create the “My Watchlist” page
+
+Now that we know what movies the user wants to watch, we can give them an interface to see what movies they’ve saved.
+
+1. Somewhere in index.html, add a link that says “Go to my watchlist”
+    1. Have that link navigate to “/watchlist.html”
+2. Create a new watchlist.html file
+3. Complete this html in a similar style to index.html
+    1. Have the “Scene It” title at the top
+    2. Don’t include a search bar this time
+    3. Have a “movies-container” div to hold the list of saved movies
+4. Write a watchlist.js file that does the following:
+    1. When the page loads, pull the watchlist from localStorage
+        1. Use localStorage.getItem(‘watchlist’);
+    2. Renders each movie to “movies-container”, just like in index.js
+        1. You can have the movies render exactly like they did in index.js, or you can switch it up!
+
+You’ll find that the above ^^ is almost identical to what you did in Part 1! The only difference is that instead of showing a list of movies from *data.js**,***  you’ll be showing a list of movies from **localStorage.getItem(‘watchlist’);**
 

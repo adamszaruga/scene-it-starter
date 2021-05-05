@@ -57,6 +57,7 @@ if no img =>
  */
 
 // 1. saveToWatchlist has a parameter called **imdbID** which will tell us which movie the user clicked on. We’ll use it to sift through movieData.js to find the relevant movie information. variable movie has the movie information that we want in our watchlist, 
+// goal: Now, when you click the add button for any given, you should see it’s data saved into local storage under the key “watchlist”!
 const saveToWatchlist = imdbID => {
   // console.log("clicked movie imdbID: ", imdbID);
   let movie = movieData.find(currentMovie => {
